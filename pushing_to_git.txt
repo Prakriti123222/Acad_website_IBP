@@ -1,0 +1,5 @@
+Evertime to push update
+
+git pull origin main
+git merge
+git push -u origin main
