@@ -1,0 +1,48 @@
+<form name="form1" id="form1" action="" method="POST">
+    <div class="row g-3 form-top">
+        <div class="col">
+            <input type="text" class="form-control" id="userName" name="userName" placeholder="Name"
+                aria-label="userName" required>
+        </div>
+        <div class="col">
+            <input type="email" class="form-control" id="emailID" name="emailID" placeholder="abc@iitgn.ac.in"
+                aria-label="emailID" required>
+        </div>
+        <div class="col">
+            <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Phone Number"
+                aria-label="phoneNumber" required>
+        </div>
+    </div>
+    <div class="row g-3 form-top">
+        <div class="col">
+            <select class="form-select" id="programme" name="programme" aria-label="Programme" required>
+                <option value="" selected>Choose Programme</option>
+            </select>
+        </div>
+        <div class="col">
+            <select class="form-select" aria-label="discipline" name="discipline" id="discipline" required>
+                <option value="" selected>Choose Discipline (Choose Programme First)</option>
+            </select>
+        </div>
+    </div>
+    <div class="row g-3 form-top">
+        <div class="col">
+            <select class="form-select" aria-label="Request type" name="requestType" id="requestType" required>
+                <option value="">Select Request Type</option>
+                <option value="requestType1">Request type 1</option>
+                <option value="requestType2">Request type 2</option>
+                <option value="requestType3">Request type 3</option>
+                <option value="requestType4 ">Request type 4</option>
+            </select>
+        </div>
+        <div class="col">
+            <input type="text" class="form-control" placeholder="Roll Number" id="rollNumber" name="rollNumber"
+                aria-label="rollNumber" required>
+        </div>
+        <div class="mb-3">
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" id="message" name="message"
+                placeholder="Message (if any)"></textarea>
+        </div>
+    </div>
+    <button type="submit">Submit</button>
+</form>
