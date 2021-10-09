@@ -47,45 +47,49 @@ app.post("/", async function (req, res) {
     },
   });
 
-  var transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: process.env.EMAIL_ID,
-      pass: process.env.PASSWORD
-    }
-  });
+  if (emailID.includes("@iitgn.ac.in")) {
+    var transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: process.env.EMAIL_ID,
+        pass: process.env.PASSWORD
+      }
+    });
+    var mailOptions = {
+      from: "Prakriti<nature.prakriti123@gmail.com>",
+      to: process.env.EMAIL_ID,
+      cc: process.env.EMAIL_ID_2,
+      subject: `New ${requestType}`,
+      text: `Student details \n\nName: ${userName} \nEmail ID: ${emailID} \nPhone Number: ${phoneNumber} \nProgramme: ${programme} \nDiscipline: ${discipline} \nRoll Number: ${rollNumber} \nMessage: ${message}`
+    };
 
-  var mailOptions = {
-    from: "Prakriti<nature.prakriti123@gmail.com>",
-    to: process.env.EMAIL_ID,
-    cc: process.env.EMAIL_ID_2,
-    subject: `New ${requestType}`,
-    text: `Student details \n\nName: ${userName} \nEmailID: ${emailID} \nPhone Number: ${phoneNumber} \nProgramme: ${programme} \nDiscipline: ${discipline} \nRoll Number: ${rollNumber} \nMessage: ${message}`
-  };
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log('Email sent: ' + info.response);
+      }
+    });
 
-  transporter.sendMail(mailOptions, function (error, info) {
-    if (error) {
-      console.log(error);
-    } else {
-      console.log('Email sent: ' + info.response);
-    }
-  });
+    var mailOptions2 = {
+      from: "Prakriti<nature.prakriti123@gmail.com>",
+      to: emailID,
+      subject: `Submitted ${requestType}`,
+      text: `Dear ${userName},\n\nYour request has been successfully submitted. \n\nRegards\nAcademic Office\nIIT Gandhinagar`
+    };
 
-  var mailOptions2 = {
-    from: "Prakriti<nature.prakriti123@gmail.com>",
-    to: emailID,
-    subject: `Submitted ${requestType}`,
-    text: `Dear ${userName},\n\nYour request has been successfully submitted. \n\nRegards\nAcademic Office\nIIT Gandhinagar`
-  };
-
-  transporter.sendMail(mailOptions2, function (error, info) {
-    if (error) {
-      console.log(error);
-    } else {
-      console.log('Email sent: ' + info.response);
-    }
-  });
-  res.send("done");
+    transporter.sendMail(mailOptions2, function (error, info) {
+      if (error) {
+        console.log(error);
+        res.render("error");
+      } else {
+        console.log('Email sent: ' + info.response);
+        res.render("success");
+      }
+    });
+  } else {
+    res.render("incorrect_email")
+  }
 });
 
 

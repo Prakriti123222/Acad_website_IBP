@@ -22,39 +22,7 @@
     <%- include('partials/form') %>
   </div>
 
-  <script>
-    var subjectObject = {
-      "Btech": ["Btech1", "Btech2", "Btech3", "Btech4", "Btech5", "Btech6"],
-      "Mtech": ["Mtech1", "Mtech2", "Mtech3", "Mtech4"],
-      "Bsc": ["Bsc1", "Bsc2", "Bsc3", "Bsc4", "Bsc5"],
-      "Msc": ["Msc1", "Msc2", "Msc3"],
-      "Phd": ["Phd1", "Phd2"]
-    }
-    var requestList = ["1", "2"];
-    window.onload = function(){
-      var request = document.getElementById("requestType");
-      for (var i = 0; i<requestList.length; i++){
-        request.options[request.options.length] = new Option(i,i);
-      }
-    }
-    window.onload = function () {
-      var subjectSel = document.getElementById("programme");
-      var topicSel = document.getElementById("discipline");
-      for (var x in subjectObject) {
-        subjectSel.options[subjectSel.options.length] = new Option(x, x);
-      }
-      subjectSel.onchange = function () {
-        topicSel.length = 1;
-        for (var y in subjectObject[this.value]) {
-          z = subjectObject[this.value].length;
-          var newValue = subjectObject[this.value][y];
-          // console.log(newValue);
-          topicSel.options[topicSel.options.length] = new Option(newValue, newValue);
-        }
-      }
-    }
-  </script>
-  <!-- <script src="\js\mail.js"></script> -->
+  <script src="\js\dependent_dropdowns.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
     integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
     crossorigin="anonymous"></script>
