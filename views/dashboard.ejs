@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" type='text/css' href="\css\styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+	<title>Dashboard</title>
+	<style>
+		.sheet{
+			width: 100vw;
+			height: 100vh;
+		}
+	</style>
+</head>
+<body>
+	<div style="background-color: white;">
+		<div class="row" id="dashboard_header">
+			<div class="col-sm-2 text-center">
+				<img src="\images\logo.png" alt="logo" height="100" width="auto" id="dashboard_logo"> 
+			</div>
+			<div class="col-sm-10 text-center" id="headertext">
+				<h3>Academic Request System</h3>
+				<h4>IIT Gandhinagar</h4>
+			</div>
+		</div>
+	</div>
+	<div class='row' id="adminpanelbar">
+		<div class="col-sm-2 text-center" style="margin:auto;"><b>Admin Panel</b></div>
+		<div class="col-sm-7">
+			<input type="hidden" class="form-control" value=<%=user.email%> id="emailID" name="emailID"
+			placeholder="abc@iitgn.ac.in *"
+			aria-label="emailID" required>
+		</div>
+
+		<div class="col-sm-1 text-center" style="margin:auto;" id="sheet_search">
+			<div id="search_highlight">
+			<b><i class="fa fa-search" id='searchsymbol'></i>
+			Search</b></div>
+		<div class="card" style='padding-left: 20px; padding-right: 20px;' id='search_card'>
+		   <div class='row text-nowrap' style="color:grey;">
+			Ctrl+F
+		   </div>
+	   </div>			    
+	   </div>
+		
+		<div class="col-sm-1 text-center" style="margin:auto;" id="account"><b>
+			 Account</b>
+		 <div class="card" style='padding-left: 20px; padding-right: 40px;' id='Card'>
+			<div class='row text-nowrap'>
+			<div class='col-sm-2 nopadding' style="margin:auto;"><img src= <%= user.picture %> alt="profile photo" style= "width:40px; height:40px; border-radius: 50%;"></div>
+			<div class="col-sm-10" style="margin:auto;">
+			<div class="container nopadding" >
+				<b><%=user.name%></b><br>
+				<%=user.email%>
+			</div>	
+			</div>
+			</div>
+		</div>			    
+		</div>
+
+		 <div class="col-sm-1 text-center" style="margin:auto;">
+			<a href="/logout" id='logout'>
+				<b>Sign Out</b>
+			</a>
+		 </div>	 
+	</div>
+	<div style="background-color: white;">
+	<div class='row text-nowrap'>
+		<div class="col-2 nopadding" id="allrequests">
+			<div style="height:5px;font-size:5px;">&nbsp;</div>
+			<div class="row-sm" id="default_request">&nbsp;&nbsp;&nbsp;&nbsp;— &#128196; /</div>
+			
+			<% if ((user.email ==="nature.prakriti123@gmail.com")||(user.email ==="acadoffice5@gmail.com")){ %>
+				<div class="row-sm" id="anjanaba" onclick="datadisplayanjanaba()">&nbsp;&nbsp;&nbsp;&nbsp;+ &#128196; ANJANABA</div>
+			<% } %>
+
+			<% if ((user.email ==="prakriti.saroj@iitgn.ac.in")||(user.email ==="acadoffice5@gmail.com")){ %>
+				<div class="row-sm" id="chirag" onclick="datadisplaychirag()">&nbsp;&nbsp;&nbsp;&nbsp;+ &#128196; CHIRAG</div>
+			<% } %>
+
+			<% if ((user.email ==="ksheer.agrawal@iitgn.ac.in")||(user.email ==="acadoffice5@gmail.com")){ %>
+				<div class="row-sm" id="hanik" onclick="datadisplayhanik()">&nbsp;&nbsp;&nbsp;&nbsp;+ &#128196; HANIK</div>
+			<% } %>
+
+			<% if ((user.email ==="ksheeragrawal@gmail.com")||(user.email ==="acadoffice5@gmail.com")){ %>
+				<div class="row-sm" id="vkjithesh" onclick="datadisplayvkjithesh()">&nbsp;&nbsp;&nbsp;&nbsp;+ &#128196; VKJITHESH</div>
+			<% } %>
+
+			<% if ((user.email ==="nature.amit@gmail.com")||(user.email ==="acadoffice5@gmail.com")){ %>
+				<div class="row-sm" id="mrugesh" onclick="datadisplaymrugesh()">&nbsp;&nbsp;&nbsp;&nbsp;+ &#128196; MRUGESH</div>
+			<% } %>
+
+			<% if ((user.email ==="nature.amit19@gmail.com")||(user.email ==="acadoffice5@gmail.com")){ %>
+				<div class="row-sm" id="payal" onclick="datadisplaypayal()">&nbsp;&nbsp;&nbsp;&nbsp;+ &#128196; PAYAL</div>
+			<% } %>
+
+			<% if ((user.email ==="mukul.raj@iitgn.ac.in")||(user.email ==="acadoffice5@gmail.com")){ %>
+				<div class="row-sm" id="sanjay" onclick="datadisplaysanjay()">&nbsp;&nbsp;&nbsp;&nbsp;+ &#128196; SANJAY</div>
+			<% } %>
+
+			<% if ((user.email ==="mukulraj9661@gmail.com")||(user.email ==="acadoffice5@gmail.com")){ %>
+				<div class="row-sm" id="timir" onclick="datadisplaytimir()">&nbsp;&nbsp;&nbsp;&nbsp;+ &#128196; TIMIR</div>
+			<% } %>
+
+			<% if ((user.email ==="thelionkingamit@gmail.com")||(user.email ==="acadoffice5@gmail.com")){ %>
+				<div class="row-sm" id="vijay" onclick="datadisplayvijay()">&nbsp;&nbsp;&nbsp;&nbsp;+ &#128196; VIJAY</div>
+			<% } %>
+
+			<% if ((user.email ==="kshitij.horizonn@gmail.com")||(user.email ==="acadoffice5@gmail.com")){ %>
+				<div class="row-sm" id="others" onclick="datadisplayothers()">&nbsp;&nbsp;&nbsp;&nbsp;+ &#128196; OTHERS</div>
+			<% } %>
+			
+			
+		</div>
+		<div class="col-10 nopadding" id="frame">
+			
+            <% if (user.email ==="nature.prakriti123@gmail.com"){ %>
+				<iframe class="responsive-iframe" id='frame_datasheet' src="https://docs.google.com/spreadsheets/d/1Y1RIAPApWlnNDQUu1sX_Ru2uovXC9mwdH8mhpRYImwc/edit?rm=demo#gid=0"></iframe>
+			<% } else if (user.email ==="prakriti.saroj@iitgn.ac.in") { %>
+				<iframe class="responsive-iframe" id='frame_datasheet' src="https://docs.google.com/spreadsheets/d/1zPk963NzfR3-yOblxjrWiBEtwRwx7RPzrJubWObhRk4/edit?rm=demo#gid=0"></iframe>
+			<% } else if (user.email ==="ksheer.agrawal@iitgn.ac.in") { %>
+				<iframe class="responsive-iframe" id='frame_datasheet' src="https://docs.google.com/spreadsheets/d/1AtPZtBbVQkSh-dpnDwxoHanKLO3MT13lVTmS63mlXtA/edit?rm=demo#gid=0"></iframe>
+			<% } else if (user.email ==="ksheeragrawal@gmail.com") { %>
+				<iframe class="responsive-iframe" id='frame_datasheet' src="https://docs.google.com/spreadsheets/d/1FvZEYxWcQotyirgljgnJ8dZSq7hlHIqDIqaPaGzPOzU/edit?rm=demo#gid=0"></iframe>
+			<% } else if (user.email ==="nature.amit@gmail.com") { %>
+				<iframe class="responsive-iframe" id='frame_datasheet' src="https://docs.google.com/spreadsheets/d/1I596A2ytO478D23NbLjpfalMVuQyfqs6xH5QxMyV0aI/edit?rm=demo#gid=0"></iframe>
+			<% } else if (user.email ==="nature.amit19@gmail.com") { %>
+				<iframe class="responsive-iframe" id='frame_datasheet' src="https://docs.google.com/spreadsheets/d/1ndrxMDkrR1SI5uypixJbHAZyZnfOakjzrAugczsAT2w/edit?rm=demo#gid=0"></iframe>
+			<% } else if (user.email ==="mukul.raj@iitgn.ac.in") { %>
+				<iframe class="responsive-iframe" id='frame_datasheet' src="https://docs.google.com/spreadsheets/d/1MqmrAfNyfzwblonVlvYJDozu8QodZwP-UKgkLkhLTzc/edit?rm=demo#gid=0"></iframe>
+			<% } else if (user.email ==="mukulraj9661@gmail.com") { %>
+				<iframe class="responsive-iframe" id='frame_datasheet' src="https://docs.google.com/spreadsheets/d/1NLFz606kFlhZOEBrvYSw7ML8hiVkCCiKo6ZGGNT6VPk/edit?rm=demo#gid=0"></iframe>	
+			<% } else if (user.email ==="thelionkingamit@gmail.com") { %>
+				<iframe class="responsive-iframe" id='frame_datasheet' src="https://docs.google.com/spreadsheets/d/1G0xyI9AHEkKU3r9ffMvMkTFvU9AiD1ICZjl6qDSqjPU/edit?rm=demo#gid=0"></iframe>
+			<% } else if (user.email ==="kshitij.horizonn@gmail.com") { %>
+				<iframe class="responsive-iframe" id='frame_datasheet' src="https://docs.google.com/spreadsheets/d/18FvetTo40dpXuQFvj6YQsmv04Lzk1yCv_bwQ389V8aY/edit?rm=demo#gid=0"></iframe>	
+			<% } else if (user.email ==="acadoffice5@gmail.com") { %>
+				<iframe class="responsive-iframe" id='frame_datasheet' src="https://docs.google.com/spreadsheets/d/18FvetTo40dpXuQFvj6YQsmv04Lzk1yCv_bwQ389V8aY/edit?rm=demo#gid=0"></iframe>		
+			<% } %>
+
+		</div>
+	</div>
+</div>
+
+
+
+<script src="\js\search.js"></script>   
+<script src="\js\datadisplay.js"></script>   
+
+
+</body>
+</html>
